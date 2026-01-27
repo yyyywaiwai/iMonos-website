@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iMonosの追加とインストール - AltStore PAL インストール | iMonos</title>
+    <meta name="description" content="AltStore PALにiMonosのソースを追加して、アプリをインストールする手順">
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="install.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .source-action-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 24px;
+            margin: 20px 0 40px;
+            text-align: center;
+        }
+
+        .source-url-container {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 8px 16px;
+            margin: 16px 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .source-url {
+            flex: 1;
+            text-align: left;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #ddd;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .action-btns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            border: none;
+        }
+
+        .direct-btn {
+            background: #00d2b4;
+            color: #000;
+        }
+
+        .direct-btn:hover {
+            background: #00f0ce;
+            transform: translateY(-2px);
+        }
+
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .copy-btn.copied {
+            background: #4caf50;
+        }
+
+        @media (max-width: 600px) {
+            .action-btns {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ambient-background"></div>
+
+    <!-- Header -->
+    <header class="install-header">
+        <a href="../../index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            ホームに戻る
+        </a>
+    </header>
+
+    <!-- Progress Indicator -->
+    <section class="install-progress">
+        <div class="container">
+            <div class="progress-steps">
+                <div class="progress-step completed">
+                    <div class="step-number">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    </div>
+                    <span class="step-label">前提条件</span>
+                </div>
+                <div class="progress-line completed"></div>
+                <div class="progress-step completed">
+                    <div class="step-number">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    </div>
+                    <span class="step-label">AltStore PAL</span>
+                </div>
+                <div class="progress-line completed"></div>
+                <div class="progress-step completed">
+                    <div class="step-number">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    </div>
+                    <span class="step-label">設定変更</span>
+                </div>
+                <div class="progress-line completed"></div>
+                <div class="progress-step active">
+                    <div class="step-number">4</div>
+                    <span class="step-label">iMonos追加</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="install-content">
+        <div class="container">
+            <h1 class="install-title">iMonosのリポジトリ登録</h1>
+            <p class="install-subtitle">最後に、AltStore PALにiMonos専用のソースを追加してインストールを完了します。</p>
+
+            <div class="source-action-card">
+                <h3>iMonos R18ソースを追加</h3>
+                <p>以下のボタンをタップすると、AltStore PALが自動的に開き、ソース追加画面が表示されます。</p>
+
+                <div class="source-url-container">
+                    <div class="source-url" id="sourceUrl">https://eichi.yyyywaiwai.com/source.json</div>
+                </div>
+
+                <div class="action-btns">
+                    <a href="altstore-pal://source?url=https://eichi.yyyywaiwai.com/source.json"
+                        class="action-btn direct-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
+                        </svg>
+                        AltStore PALに追加
+                    </a>
+                    <button class="action-btn copy-btn" onclick="copySourceUrl()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                        </svg>
+                        URLをコピー
+                    </button>
+                </div>
+            </div>
+
+            <div class="screenshot-grid">
+                <div class="screenshot-item">
+                    <img src="../../res/altpal-2.jpg" alt="リポジトリ追加 1" class="screenshot">
+                </div>
+                <div class="screenshot-item">
+                    <img src="../../res/altpal-3.jpg" alt="リポジトリ追加 2" class="screenshot">
+                </div>
+                <div class="screenshot-item">
+                    <img src="../../res/altpal-4.jpg" alt="インストール画面" class="screenshot">
+                </div>
+            </div>
+
+            <div class="step-instructions">
+                <div class="instruction-card">
+                    <div class="instruction-number">1</div>
+                    <div class="instruction-content">
+                        <h3>ソース追加が自動で開かない場合</h3>
+                        <p>AltStore PALの「ソース」タブ画面の左上にある「＋」ボタンをタップします。</p>
+                    </div>
+                </div>
+
+                <div class="instruction-card">
+                    <div class="instruction-number">2</div>
+                    <div class="instruction-content">
+                        <h3>URLを入力して追加</h3>
+                        <p>コピーしたソースURLを貼り付け、「追加」をタップします。「yyyywaiwai's PAL Source - R18」が表示されれば成功です。</p>
+                    </div>
+                </div>
+
+                <div class="instruction-card">
+                    <div class="instruction-number">3</div>
+                    <div class="instruction-content">
+                        <h3>iMonosのインストール</h3>
+                        <p>追加したソースの中に表示されている「iMonos」の「無料」ボタンをタップ。最終確認で「インストール」を選択すると完了です！</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Action Buttons -->
+            <div class="install-navigation">
+                <a href="step3-screentime.html" class="nav-btn prev-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    戻る
+                </a>
+                <a href="faq.html" class="nav-btn"
+                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff;">
+                    よくある質問 (FAQ)
+                </a>
+                <a href="../../index.html" class="nav-btn next-btn" style="background: #00d2b4; color: #000;">
+                    完了！ホームへ
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function copySourceUrl() {
+            const urlText = document.getElementById('sourceUrl').innerText;
+            navigator.clipboard.writeText(urlText).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                const originalText = btn.innerHTML;
+                btn.classList.add('copied');
+                btn.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    コピー完了！
+                `;
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = originalText;
+                }, 2000);
+            });
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="copyright">© 2026 yyyywaiwai</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スクリーンタイムの設定 - AltStore PAL インストール | iMonos</title>
+    <meta name="description" content="iMonosをインストールするためにスクリーンタイムの制限を解除する手順">
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="install.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="ambient-background"></div>
+
+    <!-- Header -->
+    <header class="install-header">
+        <a href="../../index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            ホームに戻る
+        </a>
+    </header>
+
+    <!-- Progress Indicator -->
+    <section class="install-progress">
+        <div class="container">
+            <div class="progress-steps">
+                <div class="progress-step completed">
+                    <div class="step-number">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    </div>
+                    <span class="step-label">前提条件</span>
+                </div>
+                <div class="progress-line completed"></div>
+                <div class="progress-step completed">
+                    <div class="step-number">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    </div>
+                    <span class="step-label">AltStore PAL</span>
+                </div>
+                <div class="progress-line completed"></div>
+                <div class="progress-step active">
+                    <div class="step-number">3</div>
+                    <span class="step-label">設定変更</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step">
+                    <div class="step-number">4</div>
+                    <span class="step-label">iMonos追加</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="install-content">
+        <div class="container">
+            <h1 class="install-title">スクリーンタイムの設定</h1>
+            <p class="install-subtitle">iMonos（審査適応区分外アプリ）をインストールできるように、制限を一時的に緩和します。</p>
+
+            <!-- Screenshot Carousel-like Grid -->
+            <div class="screenshot-grid">
+                <div class="screenshot-item">
+                    <img src="../../res/scrtime-1.jpg" alt="スクリーンタイム設定 1" class="screenshot">
+                </div>
+                <div class="screenshot-item">
+                    <img src="../../res/scrtime-2.jpg" alt="スクリーンタイム設定 2" class="screenshot">
+                </div>
+                <div class="screenshot-item">
+                    <img src="../../res/scrtime-3.jpg" alt="スクリーンタイム設定 3" class="screenshot">
+                </div>
+            </div>
+
+            <div class="step-instructions">
+                <div class="instruction-card">
+                    <div class="instruction-number">1</div>
+                    <div class="instruction-content">
+                        <h3>制限をオンにする</h3>
+                        <p>設定アプリ ＞ スクリーンタイム ＞ <strong>コンテンツとプライバシーの制限</strong> に進み、一番上のトグルを<strong>オン</strong>にします。</p>
+                    </div>
+                </div>
+
+                <div class="instruction-card">
+                    <div class="instruction-number">2</div>
+                    <div class="instruction-content">
+                        <h3>ストア制限の設定を開く</h3>
+                        <p><strong>「App Store、メディア、Web、およびゲーム」</strong>をタップします。</p>
+                    </div>
+                </div>
+
+                <div class="instruction-card">
+                    <div class="instruction-number">3</div>
+                    <div class="instruction-content">
+                        <h3>アプリの制限を「Unrated」に</h3>
+                        <p>「アプリ」の項目を選択し、一番下の<strong>「Unrated」</strong>にチェックを入れます。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="install-navigation">
+                <a href="step2-install.html" class="nav-btn prev-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    戻る
+                </a>
+                <a href="step4-imonos.html" class="nav-btn next-btn">
+                    次へ
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="copyright">© 2026 yyyywaiwai</p>
+        </div>
+    </footer>
+</body>
+
+</html>

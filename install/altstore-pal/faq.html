@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>よくある質問 (FAQ) - AltStore PAL インストール | iMonos</title>
+    <meta name="description" content="iMonosをAltStore PALでインストール・利用する際のよくある質問とトラブルシューティング">
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="install.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .faq-section {
+            margin-top: 40px;
+        }
+
+        .faq-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .faq-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-question {
+            color: #00d2b4;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .faq-question::before {
+            content: "Q.";
+            opacity: 0.6;
+        }
+
+        .faq-answer {
+            color: #ddd;
+            line-height: 1.6;
+            margin-left: 32px;
+        }
+
+        .faq-answer strong {
+            color: #fff;
+        }
+
+        .faq-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .important-note {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid rgba(255, 107, 107, 0.2);
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 12px;
+            font-size: 0.9rem;
+        }
+
+        .tips-badge {
+            background: rgba(0, 210, 180, 0.1);
+            color: #00d2b4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 4px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ambient-background"></div>
+
+    <!-- Header -->
+    <header class="install-header">
+        <a href="../../index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            ホームに戻る
+        </a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="install-content">
+        <div class="container">
+            <h1 class="install-title">よくある質問 (FAQ)</h1>
+            <p class="install-subtitle">トラブルが発生した場合や、解決しない手順についてはこちらをご確認ください。</p>
+
+            <div class="faq-section">
+                <!-- 年齢制限関連 -->
+                <div class="faq-card">
+                    <span class="faq-tag">年齢制限・インストールエラー</span>
+                    <div class="faq-question">
+                        年齢制限に関わるエラーでインストールや起動ができません
+                    </div>
+                    <div class="faq-answer">
+                        <p>以下のような症状が該当します：</p>
+                        <ul style="margin: 8px 0; color: #bbb; font-size: 0.9rem;">
+                            <li>「install iMonos」を押しても何も起きない</li>
+                            <li>「このデバイスに設定されているコンテンツ制限により…」と出る</li>
+                            <li>起動時に「APP NAMEは年齢制限指定を超えています」と出る</li>
+                            <li>「The request install has a rating that exceeds this device’s restrictions」と出る</li>
+                            <li>アイコンがグレーアウトして起動できない</li>
+                        </ul>
+                        <p><strong>【対処法】</strong><br>
+                            1. <strong>設定アプリ ＞ スクリーンタイム ＞ コンテンツとプライバシーの制限</strong> に進む<br>
+                            2. <strong>「App Store、メディア、Web、およびゲーム」</strong> をタップ<br>
+                            3. アプリを一度 <strong>「18+」</strong> に設定してから、再度 <strong>「Unrated」</strong> に戻してください。</p>
+
+                        <div class="important-note">
+                            <span class="tips-badge">Tips</span>
+                            使わないときは<strong>「コンテンツとプライバシーの制限」自体をオフ</strong>にしておき、アプリを起動する直前に<strong>オン</strong>にすることで、制限の切り替えがすぐに反映されない問題を回避できる場合があります。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ソース追加関連 -->
+                <div class="faq-card">
+                    <span class="faq-tag">リポジトリ追加</span>
+                    <div class="faq-question">
+                        ソースを追加しようとすると「App transport error」が出る
+                    </div>
+                    <div class="faq-answer">
+                        URLが <strong>https://</strong> で始まっているか確認してください。コピー時に末尾にスペースが含まれていないかもチェックしてください。
+                    </div>
+                </div>
+
+                <!-- インストール不可 -->
+                <div class="faq-card">
+                    <span class="faq-tag">環境条件</span>
+                    <div class="faq-question">
+                        AltStore PAL 自体がインストールできません
+                    </div>
+                    <div class="faq-answer">
+                        <p>以下の条件をすべて満たしている必要があります：</p>
+                        <ul style="margin: 8px 0; color: #bbb; font-size: 0.9rem;">
+                            <li><strong>iOS 26.2以上</strong>をインストールしている</li>
+                            <li>(物理的に)<strong>日本国内に居住</strong>している</li>
+                            <li><strong>Safari経由</strong>でアクセスしている（Chrome等は不可）</li>
+                        </ul>
+                        <p>※iOS 26.1以下の方は AltStore PAL を利用できません。パソコンを使用した「サイドロード」でのインストールを検討してください。</p>
+                    </div>
+                </div>
+
+                <!-- リンク切れ・サーバー -->
+                <div class="faq-card">
+                    <span class="faq-tag">ダウンロードエラー</span>
+                    <div class="faq-question">
+                        「アプリは利用できません」と表示される
+                    </div>
+                    <div class="faq-answer">
+                        アプリを配布しているサーバーが一時的に過負荷になっている可能性があります。<strong>数分待ってから</strong>再試行してください。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="install-navigation">
+                <a href="step4-imonos.html" class="nav-btn prev-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    手順に戻る
+                </a>
+                <a href="../../index.html" class="nav-btn next-btn"
+                    style="background: rgba(255,255,255,0.1); color: #fff;">
+                    ホームに戻る
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="copyright">© 2026 yyyywaiwai</p>
+        </div>
+    </footer>
+</body>
+
+</html>
