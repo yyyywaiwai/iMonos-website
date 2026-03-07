@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>スクリーンタイムの設定 - AltStore PAL インストール | iMons</title>
     <meta name="description" content="iMonsをインストールするためにスクリーンタイムの制限を解除する手順">
+    <meta name="theme-color" content="#080a10">
+    <link rel="icon" href="../../app-icon.png" type="image/png">
     <link rel="stylesheet" href="../../index.css">
     <link rel="stylesheet" href="install.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,69 +16,74 @@
 </head>
 
 <body>
-    <div class="ambient-background"></div>
+    <a class="skip-link" href="#main-content">本文へスキップ</a>
+    <div class="ambient-background" aria-hidden="true"></div>
 
-    <!-- Header -->
     <header class="install-header">
-        <a href="../../index.html" class="back-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-            ホームに戻る
-        </a>
+        <div class="container install-header-inner">
+            <a href="../../index.html" class="back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                ホームに戻る
+            </a>
+        </div>
     </header>
 
-    <!-- Progress Indicator -->
     <section class="install-progress">
         <div class="container">
-            <div class="progress-steps">
-                <div class="progress-step completed">
-                    <div class="step-number">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                            <polyline points="20 6 9 17 4 12" />
-                        </svg>
+            <div class="progress-card">
+                <div class="progress-steps" aria-label="インストール進捗">
+                    <div class="progress-step completed">
+                        <div class="step-number">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <span class="step-label">前提条件</span>
                     </div>
-                    <span class="step-label">前提条件</span>
-                </div>
-                <div class="progress-line completed"></div>
-                <div class="progress-step completed">
-                    <div class="step-number">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                            <polyline points="20 6 9 17 4 12" />
-                        </svg>
+                    <div class="progress-line completed"></div>
+                    <div class="progress-step completed">
+                        <div class="step-number">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <span class="step-label">AltStore PAL</span>
                     </div>
-                    <span class="step-label">AltStore PAL</span>
-                </div>
-                <div class="progress-line completed"></div>
-                <div class="progress-step active">
-                    <div class="step-number">3</div>
-                    <span class="step-label">設定変更</span>
-                </div>
-                <div class="progress-line"></div>
-                <div class="progress-step">
-                    <div class="step-number">4</div>
-                    <span class="step-label">iMons追加</span>
+                    <div class="progress-line completed"></div>
+                    <div class="progress-step active">
+                        <div class="step-number">3</div>
+                        <span class="step-label">設定変更</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step">
+                        <div class="step-number">4</div>
+                        <span class="step-label">iMons追加</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="install-content">
+    <main class="install-content" id="main-content">
         <div class="container">
+            <p class="install-kicker">Step 3 of 4</p>
             <h1 class="install-title">スクリーンタイムの設定</h1>
             <p class="install-subtitle">iMons（審査適応区分外アプリ）をインストールできるように、制限を一時的に緩和します。</p>
 
-            <!-- Screenshot Carousel-like Grid -->
             <div class="screenshot-grid">
                 <div class="screenshot-item">
-                    <img src="../../res/scrtime-1.jpg" alt="スクリーンタイム設定 1" class="screenshot">
+                    <img src="../../res/scrtime-1.jpg" alt="スクリーンタイム設定 1" class="screenshot" width="750"
+                        height="1334" loading="lazy">
                 </div>
                 <div class="screenshot-item">
-                    <img src="../../res/scrtime-2.jpg" alt="スクリーンタイム設定 2" class="screenshot">
+                    <img src="../../res/scrtime-2.jpg" alt="スクリーンタイム設定 2" class="screenshot" width="750"
+                        height="1334" loading="lazy">
                 </div>
                 <div class="screenshot-item">
-                    <img src="../../res/scrtime-3.jpg" alt="スクリーンタイム設定 3" class="screenshot">
+                    <img src="../../res/scrtime-3.jpg" alt="スクリーンタイム設定 3" class="screenshot" width="750"
+                        height="1334" loading="lazy">
                 </div>
             </div>
 
@@ -106,17 +113,16 @@
                 </div>
             </div>
 
-            <!-- Navigation Buttons -->
             <div class="install-navigation">
                 <a href="step2-install.html" class="nav-btn prev-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M19 12H5M12 19l-7-7 7-7" />
                     </svg>
                     戻る
                 </a>
                 <a href="step4-imonos.html" class="nav-btn next-btn">
                     次へ
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                 </a>

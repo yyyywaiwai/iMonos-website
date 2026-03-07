@@ -4,152 +4,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iMonsの追加とインストール - AltStore PAL インストール | iMons</title>
+    <title>iMonsを追加してインストール - AltStore PAL インストール | iMons</title>
     <meta name="description" content="AltStore PALにiMonsのソースを追加して、アプリをインストールする手順">
+    <meta name="theme-color" content="#080a10">
+    <link rel="icon" href="../../app-icon.png" type="image/png">
     <link rel="stylesheet" href="../../index.css">
     <link rel="stylesheet" href="install.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        .source-action-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 24px;
-            margin: 20px 0 40px;
-            text-align: center;
-        }
-
-        .source-url-container {
-            display: flex;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            padding: 8px 16px;
-            margin: 16px 0;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .source-url {
-            flex: 1;
-            text-align: left;
-            font-family: monospace;
-            font-size: 0.9rem;
-            color: #ddd;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .action-btns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 16px;
-        }
-
-        .action-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            border: none;
-        }
-
-        .direct-btn {
-            background: #00d2b4;
-            color: #000;
-        }
-
-        .direct-btn:hover {
-            background: #00f0ce;
-            transform: translateY(-2px);
-        }
-
-        .copy-btn {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-        }
-
-        .copy-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .copy-btn.copied {
-            background: #4caf50;
-        }
-
-        @media (max-width: 600px) {
-            .action-btns {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
 
 <body>
-    <div class="ambient-background"></div>
+    <a class="skip-link" href="#main-content">本文へスキップ</a>
+    <div class="ambient-background" aria-hidden="true"></div>
 
-    <!-- Header -->
     <header class="install-header">
-        <a href="../../index.html" class="back-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-            ホームに戻る
-        </a>
+        <div class="container install-header-inner">
+            <a href="../../index.html" class="back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                ホームに戻る
+            </a>
+        </div>
     </header>
 
-    <!-- Progress Indicator -->
     <section class="install-progress">
         <div class="container">
-            <div class="progress-steps">
-                <div class="progress-step completed">
-                    <div class="step-number">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                            <polyline points="20 6 9 17 4 12" />
-                        </svg>
+            <div class="progress-card">
+                <div class="progress-steps" aria-label="インストール進捗">
+                    <div class="progress-step completed">
+                        <div class="step-number">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <span class="step-label">前提条件</span>
                     </div>
-                    <span class="step-label">前提条件</span>
-                </div>
-                <div class="progress-line completed"></div>
-                <div class="progress-step completed">
-                    <div class="step-number">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                            <polyline points="20 6 9 17 4 12" />
-                        </svg>
+                    <div class="progress-line completed"></div>
+                    <div class="progress-step completed">
+                        <div class="step-number">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <span class="step-label">AltStore PAL</span>
                     </div>
-                    <span class="step-label">AltStore PAL</span>
-                </div>
-                <div class="progress-line completed"></div>
-                <div class="progress-step completed">
-                    <div class="step-number">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                            <polyline points="20 6 9 17 4 12" />
-                        </svg>
+                    <div class="progress-line completed"></div>
+                    <div class="progress-step completed">
+                        <div class="step-number">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <span class="step-label">設定変更</span>
                     </div>
-                    <span class="step-label">設定変更</span>
-                </div>
-                <div class="progress-line completed"></div>
-                <div class="progress-step active">
-                    <div class="step-number">4</div>
-                    <span class="step-label">iMons追加</span>
+                    <div class="progress-line completed"></div>
+                    <div class="progress-step active">
+                        <div class="step-number">4</div>
+                        <span class="step-label">iMons追加</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="install-content">
+    <main class="install-content" id="main-content">
         <div class="container">
-            <h1 class="install-title">iMonsのリポジトリ登録</h1>
+            <p class="install-kicker">Step 4 of 4</p>
+            <h1 class="install-title">iMonsを追加してインストール</h1>
             <p class="install-subtitle">最後に、AltStore PALにiMons専用のソースを追加してインストールを完了します。</p>
 
             <div class="source-action-card">
@@ -163,32 +87,34 @@
                 <div class="action-btns">
                     <a href="altstore-pal://source?url=https://eichi.yyyywaiwai.com/source.json"
                         class="action-btn direct-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
                         </svg>
                         AltStore PALに追加
                     </a>
-                    <button class="action-btn copy-btn" onclick="copySourceUrl()">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
+                    <button class="action-btn copy-btn" id="copySourceButton" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
                             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
                         </svg>
                         URLをコピー
                     </button>
                 </div>
+                <p class="copy-status" id="copyStatus" aria-live="polite"></p>
             </div>
 
             <div class="screenshot-grid">
                 <div class="screenshot-item">
-                    <img src="../../res/altpal-2.jpg" alt="リポジトリ追加 1" class="screenshot">
+                    <img src="../../res/altpal-2.jpg" alt="リポジトリ追加 1" class="screenshot" width="750"
+                        height="1334" loading="lazy">
                 </div>
                 <div class="screenshot-item">
-                    <img src="../../res/altpal-3.jpg" alt="リポジトリ追加 2" class="screenshot">
+                    <img src="../../res/altpal-3.jpg" alt="リポジトリ追加 2" class="screenshot" width="750"
+                        height="1334" loading="lazy">
                 </div>
                 <div class="screenshot-item">
-                    <img src="../../res/altpal-4.jpg" alt="インストール画面" class="screenshot">
+                    <img src="../../res/altpal-4.jpg" alt="インストール画面" class="screenshot" width="750"
+                        height="1334" loading="lazy">
                 </div>
             </div>
 
@@ -218,21 +144,19 @@
                 </div>
             </div>
 
-            <!-- Final Action Buttons -->
             <div class="install-navigation">
                 <a href="step3-screentime.html" class="nav-btn prev-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M19 12H5M12 19l-7-7 7-7" />
                     </svg>
                     戻る
                 </a>
-                <a href="faq.html" class="nav-btn"
-                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff;">
+                <a href="faq.html" class="nav-btn ghost-btn">
                     よくある質問 (FAQ)
                 </a>
-                <a href="../../index.html" class="nav-btn next-btn" style="background: #00d2b4; color: #000;">
+                <a href="../../index.html" class="nav-btn success-btn">
                     完了！ホームへ
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
                         <polyline points="20 6 9 17 4 12" />
                     </svg>
                 </a>
@@ -241,24 +165,36 @@
     </main>
 
     <script>
-        function copySourceUrl() {
-            const urlText = document.getElementById('sourceUrl').innerText;
-            navigator.clipboard.writeText(urlText).then(() => {
-                const btn = document.querySelector('.copy-btn');
-                const originalText = btn.innerHTML;
-                btn.classList.add('copied');
-                btn.innerHTML = `
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3">
+        const copySourceButton = document.getElementById('copySourceButton');
+        const sourceUrl = document.getElementById('sourceUrl');
+        const copyStatus = document.getElementById('copyStatus');
+
+        function restoreCopyButton(button, originalContent) {
+            button.classList.remove('copied');
+            button.innerHTML = originalContent;
+        }
+
+        async function copySourceUrl() {
+            const urlText = sourceUrl.innerText;
+            const originalContent = copySourceButton.innerHTML;
+
+            try {
+                await navigator.clipboard.writeText(urlText);
+                copySourceButton.classList.add('copied');
+                copySourceButton.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
                         <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    コピー完了！
+                    コピー完了
                 `;
-                setTimeout(() => {
-                    btn.classList.remove('copied');
-                    btn.innerHTML = originalText;
-                }, 2000);
-            });
+                copyStatus.textContent = 'ソースURLをコピーしました。';
+                setTimeout(() => restoreCopyButton(copySourceButton, originalContent), 2000);
+            } catch (error) {
+                copyStatus.textContent = 'コピーできなかったので、URLを長押しして手動でコピーしてください。';
+            }
         }
+
+        copySourceButton.addEventListener('click', copySourceUrl);
     </script>
 
     <!-- Footer -->

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>前提条件 - AltStore PAL インストール | iMons</title>
     <meta name="description" content="iMonsをAltStore PALでインストールするための前提条件">
+    <meta name="theme-color" content="#080a10">
+    <link rel="icon" href="../../app-icon.png" type="image/png">
     <link rel="stylesheet" href="../../index.css">
     <link rel="stylesheet" href="install.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,55 +16,58 @@
 </head>
 
 <body>
-    <div class="ambient-background"></div>
+    <a class="skip-link" href="#main-content">本文へスキップ</a>
+    <div class="ambient-background" aria-hidden="true"></div>
 
-    <!-- Header -->
     <header class="install-header">
-        <a href="../../index.html" class="back-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-            ホームに戻る
-        </a>
+        <div class="container install-header-inner">
+            <a href="../../index.html" class="back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                ホームに戻る
+            </a>
+        </div>
     </header>
 
-    <!-- Progress Indicator -->
     <section class="install-progress">
         <div class="container">
-            <div class="progress-steps">
-                <div class="progress-step active">
-                    <div class="step-number">1</div>
-                    <span class="step-label">前提条件</span>
-                </div>
-                <div class="progress-line"></div>
-                <div class="progress-step">
-                    <div class="step-number">2</div>
-                    <span class="step-label">AltStore PAL</span>
-                </div>
-                <div class="progress-line"></div>
-                <div class="progress-step">
-                    <div class="step-number">3</div>
-                    <span class="step-label">設定変更</span>
-                </div>
-                <div class="progress-line"></div>
-                <div class="progress-step">
-                    <div class="step-number">4</div>
-                    <span class="step-label">iMons追加</span>
+            <div class="progress-card">
+                <div class="progress-steps" aria-label="インストール進捗">
+                    <div class="progress-step active">
+                        <div class="step-number">1</div>
+                        <span class="step-label">前提条件</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step">
+                        <div class="step-number">2</div>
+                        <span class="step-label">AltStore PAL</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step">
+                        <div class="step-number">3</div>
+                        <span class="step-label">設定変更</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step">
+                        <div class="step-number">4</div>
+                        <span class="step-label">iMons追加</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="install-content">
+    <main class="install-content" id="main-content">
         <div class="container">
+            <p class="install-kicker">Step 1 of 4</p>
             <h1 class="install-title">前提条件</h1>
             <p class="install-subtitle">AltStore PALでiMonsをインストールするには、以下の条件を満たしている必要があります。</p>
 
             <div class="requirements-list">
                 <div class="requirement-card">
                     <div class="requirement-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
                             <line x1="12" y1="18" x2="12.01" y2="18" />
                         </svg>
@@ -72,7 +77,7 @@
                         <p>iPadはサポートされていません</p>
                     </div>
                     <div class="requirement-check">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
                             <polyline points="20 6 9 17 4 12" />
                         </svg>
                     </div>
@@ -80,7 +85,7 @@
 
                 <div class="requirement-card">
                     <div class="requirement-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
                             <path d="M12 6v6l4 2" />
                         </svg>
@@ -90,7 +95,7 @@
                         <p>Apple IDの国/地域設定が日本である必要があります</p>
                     </div>
                     <div class="requirement-check">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
                             <polyline points="20 6 9 17 4 12" />
                         </svg>
                     </div>
@@ -98,7 +103,7 @@
 
                 <div class="requirement-card">
                     <div class="requirement-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <circle cx="12" cy="10" r="3" />
                             <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
                         </svg>
@@ -108,18 +113,17 @@
                         <p>日本国内からのアクセスが必要です</p>
                     </div>
                     <div class="requirement-check">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
                             <polyline points="20 6 9 17 4 12" />
                         </svg>
                     </div>
                 </div>
             </div>
 
-            <!-- Navigation Buttons -->
             <div class="install-navigation">
                 <a href="step2-install.html" class="nav-btn next-btn">
                     次へ
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                 </a>
