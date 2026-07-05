@@ -24,6 +24,9 @@
   <meta name="twitter:image" content="https://imonos-website.pages.dev/og-image.png">
   <link rel="canonical" href="https://imonos-website.pages.dev/">
   <link rel="icon" href="app-icon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
 </head>
 
@@ -206,7 +209,7 @@
         <div class="download-copy">
           <p class="section-kicker">Download</p>
           <h2 class="section-title" id="download-title">あなたの環境に<br>合う方法で。</h2>
-          <p class="section-description download-description">iOS 17.0以上に対応。iOS 26.2以上はAltStore PALから単体でインストールでき、それ以外の環境ではIPAをサイドロードできます。</p>
+          <p class="section-description download-description">iOS 17.0以上に対応。まずは AltStore PAL の手順を確認してください。iOS 26.2以上では単体インストールが可能です。それ以外の環境ではIPAのサイドロードを利用できます。</p>
           <a href="https://discord.com/invite/DfRhN8uFjX" target="_blank" rel="noreferrer" class="support-card">
             <span><small>SUPPORT</small><strong>インストールで困ったらDiscordへ</strong></span>
             <span aria-hidden="true">↗</span>
@@ -214,31 +217,59 @@
         </div>
 
         <div class="download-buttons">
-          <a href="https://eichi.yyyywaiwai.com/iMons-unsigned.ipa" class="download-btn download-btn-primary">
+          <a href="install/altstore-pal/prerequisites.html" class="download-btn download-btn-primary">
             <span class="download-number">01</span>
+            <span class="download-text"><strong>AltStore PAL インストール手順</strong><small>日本とEU向け / iOS 26.2以上</small></span>
+            <span class="download-arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="install/altstore-pal/faq.html" class="download-btn">
+            <span class="download-number">02</span>
+            <span class="download-text"><strong>AltStore PAL よくある質問</strong><small>導入前後のトラブルシューティング</small></span>
+            <span class="download-arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="https://eichi.yyyywaiwai.com/iMons-unsigned.ipa" class="download-btn">
+            <span class="download-number">03</span>
             <span class="download-text"><strong>IPAをダウンロード</strong><small>通常版 / 署名なし</small></span>
             <span class="download-arrow" aria-hidden="true">↓</span>
           </a>
           <a href="https://eichi.yyyywaiwai.com/iMons-filepickerfix.ipa" class="download-btn">
-            <span class="download-number">02</span>
+            <span class="download-number">04</span>
             <span class="download-text"><strong>FilePicker修正版</strong><small>署名なし / ファイル選択の問題を修正</small></span>
             <span class="download-arrow" aria-hidden="true">↓</span>
-          </a>
-          <a href="install/altstore-pal/prerequisites.html" class="download-btn">
-            <span class="download-number">03</span>
-            <span class="download-text"><strong>AltStore PAL インストール手順</strong><small>日本とEU向け</small></span>
-            <span class="download-arrow" aria-hidden="true">→</span>
-          </a>
-          <a href="install/altstore-pal/faq.html" class="download-btn">
-            <span class="download-number">04</span>
-            <span class="download-text"><strong>AltStore PAL よくある質問</strong><small>導入前後のトラブルシューティング</small></span>
-            <span class="download-arrow" aria-hidden="true">→</span>
           </a>
         </div>
       </div>
     </section>
   </main>
 
+  <script>
+    (function () {
+      var nav = document.querySelector(".site-nav");
+      if (!nav) return;
+      var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
+      if (!links.length || !("IntersectionObserver" in window)) return;
+      var map = {};
+      links.forEach(function (a) {
+        var id = a.getAttribute("href").slice(1);
+        var el = document.getElementById(id);
+        if (el) map[id] = a;
+      });
+      var obs = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            var link = map[entry.target.id];
+            if (!link) return;
+            if (entry.isIntersecting) {
+              links.forEach(function (l) { l.removeAttribute("aria-current"); });
+              link.setAttribute("aria-current", "page");
+            }
+          });
+        },
+        { rootMargin: "-40% 0px -45% 0px", threshold: 0 }
+      );
+      Object.keys(map).forEach(function (id) { obs.observe(document.getElementById(id)); });
+    })();
+  </script>
   <footer class="footer">
     <div class="container footer-shell">
       <div><p class="footer-brand">iMons</p><p class="footer-copy">Get yourself going.</p></div>
