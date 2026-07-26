@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.classList.add("js");</script>
   <title>iMons - Get yourself going.</title>
   <meta name="description" content="iMons - unofficial Twitter saved-ranking client for iOS">
   <meta name="theme-color" content="#0b0d0f">
@@ -49,7 +50,8 @@
     <section class="hero" id="top">
       <div class="container hero-shell">
         <div class="hero-copy">
-          <h1 class="app-title">ソース横断から保存まで、<br><span>これ一つで。</span></h1>
+          <p class="hero-eyebrow">Unofficial X video client for iOS</p>
+          <h1 class="app-title"><span class="ph">ソース横断から</span><span class="ph">保存まで、</span><span class="ph dim">これ一つで。</span></h1>
           <p class="hero-description">8つのX動画系コンテンツソースを横断。フィード、検索、ランキング、再生、保存まで、ひとつのアプリで完結します。</p>
           <div class="hero-actions">
             <a class="primary-cta" href="#download">Download iMons <span aria-hidden="true">↘</span></a>
@@ -58,18 +60,22 @@
         </div>
 
         <div class="hero-art" aria-label="iMonsアプリ">
-          <div class="app-icon">
-            <img src="app-icon.png" alt="iMons App Icon" width="1080" height="1080" fetchpriority="high">
+          <div class="app-icon-stage">
+            <div class="app-icon">
+              <img src="app-icon.png" alt="iMons App Icon" width="1080" height="1080" fetchpriority="high">
+            </div>
           </div>
           <p class="hero-product-name">iMons</p>
           <p class="app-subtitle">Get yourself going.</p>
         </div>
+
+        <p class="hero-scroll-cue" aria-hidden="true">Scroll</p>
       </div>
     </section>
 
     <section class="source-strip" aria-label="対応ソース">
-      <div class="container source-strip-inner">
-        <p>8 SOURCES, ONE APP</p>
+      <div class="container source-strip-inner" data-reveal>
+        <p>8 sources, one app</p>
         <div class="source-list">
           <span>monsnode</span><span>Coming Bird <small>Beta</small></span><span>twishare</span><span>Twidro</span><span>twivideo</span><span>javtwi</span><span>Twitter動画保管庫</span><span>TwiHub</span>
         </div>
@@ -78,8 +84,9 @@
 
     <section class="coming-bird" aria-labelledby="coming-bird-title">
       <div class="container coming-bird-layout">
-        <div class="coming-bird-intro">
-          <h2 id="coming-bird-title"><span>Coming Bird <small>Beta</small></span>みんなの反応が、次の発見をつくる。</h2>
+        <div class="coming-bird-intro" data-reveal>
+          <p class="section-kicker coming-bird-kicker">Coming Bird <small>Beta</small></p>
+          <h2 id="coming-bird-title"><span class="ph">みんなの反応が、</span><span class="ph">次の発見をつくる。</span></h2>
           <p>iMonsユーザーの再生、ダウンロード、お気に入りをもとに、新しい動画や注目されている動画を見つけられる独自のコンテンツソースです。</p>
 
           <div class="coming-bird-signal" aria-label="Coming Birdで確認できる指標と期間">
@@ -100,20 +107,20 @@
         </div>
 
         <dl class="coming-bird-details">
-          <div>
-            <dt>新着とランキングを、みんなで育てる</dt>
+          <div data-reveal>
+            <dt><span class="ph">新着とランキングを、</span><span class="ph">みんなで育てる</span></dt>
             <dd>アプリ内の反応を集計し、専用の新着フィードとランキングへ反映。各動画には現在の件数が表示されます。</dd>
           </div>
-          <div>
-            <dt>本文やユーザー名から探せる</dt>
+          <div data-reveal style="--reveal-delay:70ms">
+            <dt><span class="ph">本文やユーザー名から</span><span class="ph">探せる</span></dt>
             <dd>Coming Bird内を全文、本文、ユーザー名で検索できます。XのURLから動画を取り込むこともできます。</dd>
           </div>
-          <div>
-            <dt>不適切な動画はアプリから報告</dt>
+          <div data-reveal style="--reveal-delay:140ms">
+            <dt><span class="ph">不適切な動画は</span><span class="ph">アプリから報告</span></dt>
             <dd>著作権侵害や不適切な内容を、フィードや動画詳細からComing Birdへ直接報告できます。</dd>
           </div>
-          <div>
-            <dt>データ共有は、自分で選べる</dt>
+          <div data-reveal style="--reveal-delay:210ms">
+            <dt><span class="ph">データ共有は、</span><span class="ph">自分で選べる</span></dt>
             <dd>共有されるのは個人を特定できる情報を含まない動画メタデータのみ。協力するかは初回設定で選べ、あとからいつでも変更できます。</dd>
           </div>
         </dl>
@@ -125,14 +132,14 @@
 
     <section class="features" id="features" aria-labelledby="features-title">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-reveal>
           <p class="section-kicker">Features</p>
-          <h2 class="section-title" id="features-title">探す、見つける、残しておく。</h2>
+          <h2 class="section-title" id="features-title"><span class="ph">探す、見つける、</span><span class="ph">残しておく。</span></h2>
           <p class="section-description">コンテンツとの距離を縮めるための機能を、ひとつのアプリにまとめました。</p>
         </div>
 
         <div class="features-grid">
-          <article class="feature-card feature-card-lead feature-card-with-shot">
+          <article class="feature-card feature-card-lead feature-card-with-shot" data-reveal>
             <div class="feature-body">
               <h3>Home</h3>
               <p>複数ソースのフィードを切り替え、リストまたは2〜8列のグリッドで閲覧。表示方法やカルーセルの位置も自分に合わせて調整できます。</p>
@@ -142,7 +149,7 @@
             </figure>
           </article>
 
-          <article class="feature-card feature-card-five feature-card-with-shot">
+          <article class="feature-card feature-card-five feature-card-with-shot" data-reveal style="--reveal-delay:80ms">
             <div class="feature-body">
               <h3>Search</h3>
               <p>対応ソースのタグやユーザーを検索。人気順と新着順を切り替えて、目的の動画を発見できます。</p>
@@ -152,7 +159,7 @@
             </figure>
           </article>
 
-          <article class="feature-card feature-card-five feature-card-with-shot">
+          <article class="feature-card feature-card-five feature-card-with-shot" data-reveal>
             <div class="feature-body">
               <h3>Ranking</h3>
               <p>ソースごとのランキングを確認。24時間、週間、月間などの期間を切り替えられます。</p>
@@ -162,7 +169,7 @@
             </figure>
           </article>
 
-          <article class="feature-card feature-card-seven feature-card-with-shot">
+          <article class="feature-card feature-card-seven feature-card-with-shot" data-reveal style="--reveal-delay:80ms">
             <div class="feature-body">
               <h3>Download</h3>
               <p>XのURLやShare Extensionから動画を追加して保存。URL解決サービスや自動ダウンロードも設定できます。</p>
@@ -172,7 +179,7 @@
             </figure>
           </article>
 
-          <article class="feature-card feature-card-seven feature-card-with-shot">
+          <article class="feature-card feature-card-seven feature-card-with-shot" data-reveal>
             <div class="feature-body">
               <h3>Favorites</h3>
               <p>動画とユーザーをフォルダ、スナップショット、視聴履歴で整理。Google Drive同期にも対応します。</p>
@@ -182,7 +189,7 @@
             </figure>
           </article>
 
-          <article class="feature-card feature-card-five feature-card-with-shot">
+          <article class="feature-card feature-card-five feature-card-with-shot" data-reveal style="--reveal-delay:80ms">
             <div class="feature-body">
               <h3>Player</h3>
               <p>通常再生、Shorts、PiPに対応。消失した動画はWayback Machineから再生候補を探せます。</p>
@@ -192,7 +199,7 @@
             </figure>
           </article>
 
-          <article class="feature-card feature-card-wide feature-card-with-shot feature-card-horizontal">
+          <article class="feature-card feature-card-wide feature-card-with-shot feature-card-horizontal" data-reveal>
             <div class="feature-body">
               <h3>App Lock</h3>
               <p>Face IDとTouch IDによるアプリロックとプライバシーオーバーレイに対応します。</p>
@@ -207,9 +214,9 @@
 
     <section class="download-section" id="download" aria-labelledby="download-title">
       <div class="container download-shell">
-        <div class="download-copy">
+        <div class="download-copy" data-reveal>
           <p class="section-kicker">Download</p>
-          <h2 class="section-title" id="download-title">あなたの環境に<br>合う方法で。</h2>
+          <h2 class="section-title" id="download-title"><span class="ph">あなたの環境に</span><span class="ph">合う方法で。</span></h2>
           <p class="section-description download-description">iOS 17.0以上に対応。まずは AltStore PAL の手順を確認してください。iOS 26.2以上では単体インストールが可能です。それ以外の環境ではIPAのサイドロードを利用できます。</p>
           <a href="https://discord.com/invite/DfRhN8uFjX" target="_blank" rel="noreferrer" class="support-card">
             <span><small>SUPPORT</small><strong>インストールで困ったらDiscordへ</strong></span>
@@ -218,22 +225,22 @@
         </div>
 
         <div class="download-buttons">
-          <a href="install/altstore-pal/prerequisites.html" class="download-btn download-btn-primary">
+          <a href="install/altstore-pal/prerequisites.html" class="download-btn download-btn-primary" data-reveal>
             <span class="download-number">01</span>
             <span class="download-text"><strong>AltStore PAL インストール手順</strong><small>日本とEU向け / iOS 26.2以上</small></span>
             <span class="download-arrow" aria-hidden="true">→</span>
           </a>
-          <a href="install/altstore-pal/faq.html" class="download-btn">
+          <a href="install/altstore-pal/faq.html" class="download-btn" data-reveal style="--reveal-delay:70ms">
             <span class="download-number">02</span>
             <span class="download-text"><strong>AltStore PAL よくある質問</strong><small>導入前後のトラブルシューティング</small></span>
             <span class="download-arrow" aria-hidden="true">→</span>
           </a>
-          <a href="https://eichi.yyyywaiwai.com/iMons-unsigned.ipa" class="download-btn">
+          <a href="https://eichi.yyyywaiwai.com/iMons-unsigned.ipa" class="download-btn" data-reveal style="--reveal-delay:140ms">
             <span class="download-number">03</span>
             <span class="download-text"><strong>IPAをダウンロード</strong><small>通常版 / 署名なし</small></span>
             <span class="download-arrow" aria-hidden="true">↓</span>
           </a>
-          <a href="https://eichi.yyyywaiwai.com/iMons-filepickerfix.ipa" class="download-btn">
+          <a href="https://eichi.yyyywaiwai.com/iMons-filepickerfix.ipa" class="download-btn" data-reveal style="--reveal-delay:210ms">
             <span class="download-number">04</span>
             <span class="download-text"><strong>FilePicker修正版</strong><small>署名なし / ファイル選択の問題を修正</small></span>
             <span class="download-arrow" aria-hidden="true">↓</span>
@@ -243,40 +250,14 @@
     </section>
   </main>
 
-  <script>
-    (function () {
-      var nav = document.querySelector(".site-nav");
-      if (!nav) return;
-      var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
-      if (!links.length || !("IntersectionObserver" in window)) return;
-      var map = {};
-      links.forEach(function (a) {
-        var id = a.getAttribute("href").slice(1);
-        var el = document.getElementById(id);
-        if (el) map[id] = a;
-      });
-      var obs = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            var link = map[entry.target.id];
-            if (!link) return;
-            if (entry.isIntersecting) {
-              links.forEach(function (l) { l.removeAttribute("aria-current"); });
-              link.setAttribute("aria-current", "page");
-            }
-          });
-        },
-        { rootMargin: "-40% 0px -45% 0px", threshold: 0 }
-      );
-      Object.keys(map).forEach(function (id) { obs.observe(document.getElementById(id)); });
-    })();
-  </script>
   <footer class="footer">
     <div class="container footer-shell">
       <div><p class="footer-brand">iMons</p><p class="footer-copy">Get yourself going.</p></div>
-      <div class="footer-links"><a href="#features">Features</a><a href="#download">Download</a><a href="https://discord.com/invite/DfRhN8uFjX" target="_blank" rel="noreferrer">Discord</a></div>
+      <div class="footer-links"><a href="#features">Features</a><a href="story/index.html">Story</a><a href="#download">Download</a><a href="https://discord.com/invite/DfRhN8uFjX" target="_blank" rel="noreferrer">Discord</a></div>
     </div>
     <p class="copyright">© 2026 yyyywaiwai</p>
   </footer>
+
+  <script src="site.js" defer></script>
 </body>
 </html>
