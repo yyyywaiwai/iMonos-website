@@ -39,8 +39,8 @@ public/             そのまま配信される静的ファイル（画像・_he
 
 `astro.config.mjs` で `build.format: "file"` を指定し、移行前の `.html`
 付き URL をそのまま維持しています。Story ページだけは
-`/story/index.html` から `/story.html` に変わったため、`public/_redirects`
-で 301 リダイレクトしています。
+`/story/index.html` は Cloudflare Pages の pretty URL（`/story`）へ
+301 しています。
 
 ### コンポーネントの追加
 

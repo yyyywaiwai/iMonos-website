@@ -1,5 +1,4 @@
-# The story page moved from a directory route to a flat one during the Astro
-# migration; links to the old path are already out in the wild.
-/story/index.html /story.html 301
-/story/ /story.html 301
-/story /story.html 301
+# Cloudflare Pages pretty-URLs serve story.html at /story. The old directory
+# route must land there, not back on /story.html, or the two bounce forever.
+/story/index.html /story 301
+/story/ /story 301
