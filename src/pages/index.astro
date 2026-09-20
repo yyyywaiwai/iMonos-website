@@ -4,7 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Container from "@/components/Container.astro";
 import SiteHeader from "@/components/SiteHeader.astro";
 import SiteFooter from "@/components/SiteFooter.astro";
-import { Badge } from "@/components/ui/badge";
+import { Badge, badgeVariants } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -23,16 +23,24 @@ const ctaOutlineClass = cn(
 // screen-reader users can still navigate the list.
 const cardTitleClass = "font-heading text-lg leading-snug font-medium tracking-tight";
 
+// Labels and URLs follow FeedSource.allCases in ~/iMonos.
 const sources = [
-  "monsnode",
-  "Coming Bird",
-  "twishare",
-  "Twidro",
-  "twivideo",
-  "javtwi",
-  "Twitter動画保管庫",
-  "TwiHub",
+  { name: "monsnode", href: "https://monsnode.com" },
+  { name: "Coming Bird", href: "https://comingbird.yyyywaiwai.com", badge: "Beta" },
+  { name: "twishare", href: "https://twishare.net" },
+  { name: "twivideo", href: "https://twivideo.net" },
+  { name: "javtwi", href: "https://javtwi.com" },
+  { name: "Twitter動画保管庫", href: "https://www.twi-dl.net" },
+  { name: "TwiHub", href: "https://twihub.net" },
+  { name: "xget", href: "https://xget.cx" },
+  { name: "gofile douga", href: "https://gofile-douga.com" },
+  { name: "TwiXive", href: "https://twixive.net" },
 ];
+
+const sourceBadgeClass = cn(
+  badgeVariants({ variant: "outline" }),
+  "h-7 gap-1.5 px-3 font-normal",
+);
 
 const comingBirdSignals = [
   { label: "Ranking by", values: ["再生数", "DL数", "お気に入り数"] },
@@ -166,7 +174,7 @@ const secondaryLinks = [
           </h1>
 
           <p class="mt-6 max-w-xl leading-8 text-muted-foreground">
-            8つのX動画系コンテンツソースを横断。フィード、検索、ランキング、再生、保存まで、ひとつのアプリで完結します。
+            10のX動画系コンテンツソースを横断。フィード、検索、ランキング、再生、保存まで、ひとつのアプリで完結します。
           </p>
 
           <div class="mt-9 flex flex-wrap gap-3">
@@ -197,20 +205,25 @@ const secondaryLinks = [
     <section aria-label="対応ソース" class="border-b border-border">
       <Container class="grid gap-6 py-10 md:grid-cols-[180px_1fr] md:gap-10">
         <p class="text-sm font-medium text-muted-foreground">
-          8 sources, one app
+          10 sources, one app
         </p>
         <ul class="flex flex-wrap gap-2">
           {
-            sources.map((source) => (
+            sources.map(({ name, href, badge }) => (
               <li>
-                <Badge variant="outline" className="h-7 gap-1.5 px-3 font-normal">
-                  {source}
-                  {source === "Coming Bird" && (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  class={sourceBadgeClass}
+                >
+                  {name}
+                  {badge && (
                     <span class="text-[0.625rem] tracking-wide text-muted-foreground uppercase">
-                      Beta
+                      {badge}
                     </span>
                   )}
-                </Badge>
+                </a>
               </li>
             ))
           }
