@@ -1,0 +1,65 @@
+---
+import InstallLayout from "@/layouts/InstallLayout.astro";
+import InstallNav from "@/components/InstallNav.astro";
+import InstructionList from "@/components/InstructionList.astro";
+import ScreenshotGrid from "@/components/ScreenshotGrid.astro";
+
+const instructions = [
+  {
+    title: "AltStore PALのサイトにアクセス",
+    body: 'iPhoneのSafariで<a href="https://altstore.io/#Downloads" target="_blank" rel="noreferrer">altstore.io</a>を開き、Downloadsセクションまでスクロールします。',
+  },
+  {
+    title: "Downloadボタンをタップ",
+    body: "緑色の「Download」ボタンをタップして、AltStore PALのインストールを開始します。",
+  },
+  {
+    title: "設定アプリで許可",
+    body: "設定アプリを開き、最上部（Apple IDのすぐ下）に表示される「AltStore LLCからのMarketplaceを許可」をタップして「許可」を選択します。",
+  },
+  {
+    title: "インストールを完了",
+    body: "再びSafariに戻り、もう一度「Download」をタップします。表示される確認画面で「App Marketplaceをインストール」を選択して完了です。",
+  },
+];
+---
+
+<InstallLayout
+  title="AltStore PALのインストール - AltStore PAL インストール | iMons"
+  description="AltStore PALをiPhoneにインストールする方法"
+  canonicalPath="/install/altstore-pal/step2-install.html"
+  step={2}
+  kicker="Step 2 of 4"
+  heading="AltStore PALのインストール"
+  subtitle="まずはAltStore PALをiPhoneにインストールします。"
+>
+  <p class="mt-6 rounded-lg bg-muted/50 px-4 py-3 text-sm leading-7 text-muted-foreground">
+    この手順は Safari
+    で進めてください。別ブラウザでは Marketplace の許可やインストールの引き継ぎが正しく動かない場合があります。
+  </p>
+
+  <ScreenshotGrid
+    eager
+    shots={[
+      {
+        src: "/res/altpal-1.jpg",
+        alt: "AltStore PAL Download画面",
+        width: 750,
+        height: 1334,
+      },
+    ]}
+  />
+
+  <InstructionList items={instructions} />
+
+  <InstallNav
+    prev={{
+      href: "/install/altstore-pal/prerequisites.html",
+      label: "前へ：前提条件",
+    }}
+    next={{
+      href: "/install/altstore-pal/step3-screentime.html",
+      label: "次へ：設定変更",
+    }}
+  />
+</InstallLayout>

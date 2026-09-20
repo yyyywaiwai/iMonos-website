@@ -1,0 +1,65 @@
+---
+import { ArrowLeft } from "lucide-react";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Container from "@/components/Container.astro";
+import InstallProgress from "@/components/InstallProgress.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  /** Omitted on the FAQ, which sits outside the four-step flow. */
+  step?: number;
+  kicker: string;
+  heading: string;
+  subtitle: string;
+}
+
+const { title, description, canonicalPath, step, kicker, heading, subtitle } =
+  Astro.props;
+---
+
+<BaseLayout {title} {description} {canonicalPath}>
+  <header
+    class="sticky top-0 z-20 border-b border-border bg-background/80 backdrop-blur-xl"
+  >
+    <Container class="flex h-16 items-center justify-between">
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+      >
+        <ArrowLeft className="size-4" />
+        ホームに戻る
+      </a>
+      <a
+        href="/"
+        aria-label="iMons トップへ"
+        class="rounded-sm text-base font-semibold tracking-tight focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+      >
+        iMons
+      </a>
+    </Container>
+  </header>
+
+  {step && <InstallProgress current={step} />}
+
+  <main id="main-content">
+    <Container class="max-w-3xl! py-16 lg:py-20">
+      <p class="text-sm font-medium text-muted-foreground">{kicker}</p>
+      <h1
+        class="mt-4 text-3xl leading-tight font-semibold tracking-tight text-balance sm:text-4xl"
+      >
+        {heading}
+      </h1>
+      <p class="mt-4 leading-8 text-muted-foreground">{subtitle}</p>
+
+      <slot />
+    </Container>
+  </main>
+
+  <footer class="border-t border-border">
+    <Container class="py-10">
+      <p class="text-center text-xs text-muted-foreground">© 2026 yyyywaiwai</p>
+    </Container>
+  </footer>
+</BaseLayout>

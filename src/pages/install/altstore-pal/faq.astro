@@ -1,0 +1,72 @@
+---
+import InstallLayout from "@/layouts/InstallLayout.astro";
+import InstallNav from "@/components/InstallNav.astro";
+import { FaqAccordion, type FaqItem } from "@/components/FaqAccordion";
+
+const items: FaqItem[] = [
+  {
+    tag: "年齢制限・インストールエラー",
+    question: "年齢制限に関わるエラーでインストールや起動ができません",
+    answer: `
+      <p>以下のような症状が該当します：</p>
+      <ul>
+        <li>「install iMons」を押しても何も起きない</li>
+        <li>「このデバイスに設定されているコンテンツ制限により…」と出る</li>
+        <li>起動時に「iMonsは年齢制限指定を超えています」と出る</li>
+        <li>「The request install has a rating that exceeds this device's restrictions」と出る</li>
+        <li>アイコンがグレーアウトして起動できない</li>
+      </ul>
+      <p><strong>【対処法】</strong><br>
+        1. <strong>設定アプリ ＞ スクリーンタイム ＞ コンテンツとプライバシーの制限</strong> に進む<br>
+        2. <strong>「App Store、メディア、Web、およびゲーム」</strong> をタップ<br>
+        3. アプリを一度 <strong>「18+」</strong> に設定してから、再度 <strong>「Unrated」</strong> に戻してください。詳しい画面は<a href="/install/altstore-pal/step3-screentime.html">設定変更の手順</a>で確認できます。</p>
+      <p><strong>Tips</strong>：使わないときは<strong>「コンテンツとプライバシーの制限」自体をオフ</strong>にしておき、アプリを起動する直前に<strong>オン</strong>にすることで、制限の切り替えがすぐに反映されない問題を回避できる場合があります。</p>
+    `,
+  },
+  {
+    tag: "リポジトリ追加",
+    question: "ソースを追加しようとすると「App transport error」が出る",
+    answer:
+      "<p>URLが <strong>https://</strong> で始まっているか確認してください。コピー時に末尾にスペースが含まれていないかもチェックしてください。</p>",
+  },
+  {
+    tag: "環境条件",
+    question: "AltStore PAL 自体がインストールできません",
+    answer: `
+      <p>以下の条件をすべて満たしている必要があります：</p>
+      <ul>
+        <li><strong>iOS 26.2以上</strong>をインストールしている</li>
+        <li><strong>日本国内からアクセス</strong>している</li>
+        <li><strong>日本のApple ID</strong>を使用している</li>
+        <li><strong>Safari経由</strong>でアクセスしている（Chrome等は不可）</li>
+      </ul>
+      <p>※iOS 26.1以下の方は AltStore PAL を利用できません。パソコンを使用した「サイドロード」でのインストールを検討してください。</p>
+    `,
+  },
+  {
+    tag: "ダウンロードエラー",
+    question: "「アプリは利用できません」と表示される",
+    answer:
+      "<p>アプリを配布しているサーバーが一時的に過負荷になっている可能性があります。<strong>数分待ってから</strong>再試行してください。</p>",
+  },
+];
+---
+
+<InstallLayout
+  title="よくある質問 (FAQ) - AltStore PAL インストール | iMons"
+  description="iMonsをAltStore PALでインストール・利用する際のよくある質問とトラブルシューティング"
+  canonicalPath="/install/altstore-pal/faq.html"
+  kicker="Help & Troubleshooting"
+  heading="よくある質問"
+  subtitle="インストールや起動で困ったときに、まず確認してほしい項目をまとめました。"
+>
+  <FaqAccordion {items} client:visible />
+
+  <InstallNav
+    prev={{
+      href: "/install/altstore-pal/step4-imonos.html",
+      label: "インストール手順へ",
+    }}
+    extra={[{ href: "/", label: "ホームに戻る" }]}
+  />
+</InstallLayout>

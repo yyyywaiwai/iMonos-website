@@ -1,0 +1,29 @@
+---
+interface Props {
+  shots: { src: string; alt: string; width: number; height: number }[];
+  /** The first screenshot of a step is above the fold and shouldn't lazy-load. */
+  eager?: boolean;
+}
+
+const { shots, eager = false } = Astro.props;
+---
+
+<div
+  class:list={[
+    "mt-10 grid gap-4",
+    shots.length > 1 ? "grid-cols-2 sm:grid-cols-3" : "max-w-xs",
+  ]}
+>
+  {
+    shots.map(({ src, alt, width, height }) => (
+      <img
+        {src}
+        {alt}
+        {width}
+        {height}
+        loading={eager ? "eager" : "lazy"}
+        class="w-full rounded-xl bg-card ring-1 ring-foreground/10"
+      />
+    ))
+  }
+</div>

@@ -1,0 +1,57 @@
+---
+import { Check, Clock, MapPin, Smartphone } from "lucide-react";
+import InstallLayout from "@/layouts/InstallLayout.astro";
+import InstallNav from "@/components/InstallNav.astro";
+
+const requirements = [
+  {
+    Icon: Smartphone,
+    title: "iOS 26.2以上のiPhone",
+    body: "iPadはサポートされていません",
+  },
+  {
+    Icon: Clock,
+    title: "日本のApple IDを使用",
+    body: "Apple IDの国/地域設定が日本である必要があります",
+  },
+  {
+    Icon: MapPin,
+    title: "日本に居住",
+    body: "日本国内からのアクセスが必要です",
+  },
+];
+---
+
+<InstallLayout
+  title="前提条件 - AltStore PAL インストール | iMons"
+  description="iMonsをAltStore PALでインストールするための前提条件"
+  canonicalPath="/install/altstore-pal/prerequisites.html"
+  step={1}
+  kicker="Step 1 of 4"
+  heading="前提条件"
+  subtitle="AltStore PALでiMonsをインストールするには、以下の条件を満たしている必要があります。"
+>
+  <ul
+    class="mt-10 divide-y divide-border overflow-hidden rounded-xl ring-1 ring-foreground/10"
+  >
+    {
+      requirements.map(({ Icon, title, body }) => (
+        <li class="flex items-center gap-4 p-6">
+          <Icon className="size-5 shrink-0 text-muted-foreground" />
+          <div class="min-w-0 flex-1">
+            <h3 class="font-medium tracking-tight">{title}</h3>
+            <p class="mt-1 text-sm text-muted-foreground">{body}</p>
+          </div>
+          <Check className="size-4 shrink-0 text-muted-foreground" />
+        </li>
+      ))
+    }
+  </ul>
+
+  <InstallNav
+    next={{
+      href: "/install/altstore-pal/step2-install.html",
+      label: "次へ：AltStore PAL",
+    }}
+  />
+</InstallLayout>

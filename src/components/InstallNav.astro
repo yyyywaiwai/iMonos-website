@@ -1,0 +1,45 @@
+---
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+interface Props {
+  prev?: { href: string; label: string };
+  next?: { href: string; label: string };
+  /** Low-emphasis extra destinations, e.g. the FAQ or back home. */
+  extra?: { href: string; label: string }[];
+}
+
+const { prev, next, extra = [] } = Astro.props;
+
+const base = "h-10 gap-2 px-5 text-sm";
+---
+
+<nav
+  class="mt-14 flex flex-wrap items-center gap-3 border-t border-border pt-8"
+  aria-label="手順の移動"
+>
+  {
+    prev && (
+      <a href={prev.href} class={cn(buttonVariants({ variant: "outline" }), base)}>
+        <ArrowLeft className="size-4" />
+        {prev.label}
+      </a>
+    )
+  }
+  {
+    extra.map(({ href, label }) => (
+      <a href={href} class={cn(buttonVariants({ variant: "ghost" }), base)}>
+        {label}
+      </a>
+    ))
+  }
+  {
+    next && (
+      <a href={next.href} class={cn(buttonVariants(), base, "sm:ml-auto")}>
+        {next.label}
+        <ArrowRight className="size-4" />
+      </a>
+    )
+  }
+</nav>

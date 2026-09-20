@@ -1,0 +1,115 @@
+---
+import { Check, Copy, ExternalLink } from "lucide-react";
+import InstallLayout from "@/layouts/InstallLayout.astro";
+import InstallNav from "@/components/InstallNav.astro";
+import InstructionList from "@/components/InstructionList.astro";
+import ScreenshotGrid from "@/components/ScreenshotGrid.astro";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+const sourceUrl = "https://eichi.yyyywaiwai.com/source.json";
+
+const instructions = [
+  {
+    title: "ソース追加が自動で開かない場合",
+    body: "AltStore PALの「ソース」タブ画面の左上にある「＋」ボタンをタップします。",
+  },
+  {
+    title: "URLを入力して追加",
+    body: "コピーしたソースURLを貼り付け、「追加」をタップします。「yyyywaiwai's PAL Source - R18」が表示されれば成功です。",
+  },
+  {
+    title: "iMonsのインストール",
+    body: "追加したソースの中に表示されている「iMons」の「無料」ボタンをタップ。最終確認で「インストール」を選択すると完了です！",
+  },
+];
+
+const shots = [
+  { src: "/res/altpal-2.jpg", alt: "リポジトリ追加 1" },
+  { src: "/res/altpal-3.jpg", alt: "リポジトリ追加 2" },
+  { src: "/res/altpal-4.jpg", alt: "インストール画面" },
+].map((s) => ({ ...s, width: 750, height: 1334 }));
+---
+
+<InstallLayout
+  title="iMonsを追加してインストール - AltStore PAL インストール | iMons"
+  description="AltStore PALにiMonsのソースを追加して、アプリをインストールする手順"
+  canonicalPath="/install/altstore-pal/step4-imonos.html"
+  step={4}
+  kicker="Step 4 of 4"
+  heading="iMonsを追加してインストール"
+  subtitle="最後に、AltStore PALにiMons専用のソースを追加してインストールを完了します。"
+>
+  <section class="mt-10 rounded-xl bg-card p-6 ring-1 ring-foreground/10">
+    <h2 class="font-medium tracking-tight">iMons R18ソースを追加</h2>
+    <p class="mt-2 text-sm leading-7 text-muted-foreground">
+      以下のボタンをタップすると、AltStore
+      PALが自動的に開き、ソース追加画面が表示されます。
+    </p>
+
+    <p
+      class="mt-5 overflow-x-auto rounded-lg bg-muted px-4 py-3 font-mono text-xs whitespace-nowrap text-foreground"
+    >
+      {sourceUrl}
+    </p>
+
+    <div class="mt-5 flex flex-wrap items-center gap-3">
+      <a
+        href={`altstore-pal://source?url=${sourceUrl}`}
+        class={cn(buttonVariants(), "h-10 gap-2 px-5 text-sm")}
+      >
+        <ExternalLink className="size-4" />
+        AltStore PALに追加
+      </a>
+
+      {/* Rendered statically: the shadcn Button needs no React at runtime, so
+          the clipboard is wired up by the small script below instead. */}
+      <Button
+        type="button"
+        variant="outline"
+        id="copy-source"
+        data-url={sourceUrl}
+        data-copied="false"
+        className="group h-10 gap-2 px-5 text-sm"
+      >
+        <Copy className="size-4 group-data-[copied=true]:hidden" />
+        <Check className="hidden size-4 group-data-[copied=true]:block" />
+        <span class="group-data-[copied=true]:hidden">URLをコピー</span>
+        <span class="hidden group-data-[copied=true]:inline">コピー完了</span>
+      </Button>
+    </div>
+
+    <p id="copy-status" aria-live="polite" class="mt-3 text-sm text-muted-foreground"></p>
+  </section>
+
+  <script>
+    const button = document.querySelector<HTMLButtonElement>("#copy-source");
+    const status = document.querySelector<HTMLElement>("#copy-status");
+
+    button?.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(button.dataset.url!);
+        button.dataset.copied = "true";
+        setTimeout(() => (button.dataset.copied = "false"), 2000);
+      } catch {
+        if (status) {
+          status.textContent =
+            "コピーできなかったので、URLを長押しして手動でコピーしてください。";
+        }
+      }
+    });
+  </script>
+
+  <ScreenshotGrid {shots} />
+
+  <InstructionList items={instructions} />
+
+  <InstallNav
+    prev={{
+      href: "/install/altstore-pal/step3-screentime.html",
+      label: "前へ：設定変更",
+    }}
+    extra={[{ href: "/install/altstore-pal/faq.html", label: "よくある質問" }]}
+    next={{ href: "/", label: "ホームへ戻る" }}
+  />
+</InstallLayout>

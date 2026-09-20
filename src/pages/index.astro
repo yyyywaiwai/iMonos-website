@@ -1,0 +1,471 @@
+---
+import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Container from "@/components/Container.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
+import SiteFooter from "@/components/SiteFooter.astro";
+import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
+import { Card, CardDescription, CardHeader } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
+
+// `asChild` cannot work from `.astro`: Astro hands children to React as an
+// `<astro-slot>` string, so Radix's Slot has no element to merge props into.
+// Styling the anchor directly keeps these links free of any client JS.
+const ctaClass = cn(buttonVariants(), "h-11 gap-2 px-6 text-sm");
+const ctaOutlineClass = cn(
+  buttonVariants({ variant: "outline" }),
+  "h-11 gap-2 px-6 text-sm",
+);
+
+// shadcn's CardTitle is a <div>; feature names need to stay real headings so
+// screen-reader users can still navigate the list.
+const cardTitleClass = "font-heading text-lg leading-snug font-medium tracking-tight";
+
+const sources = [
+  "monsnode",
+  "Coming Bird",
+  "twishare",
+  "Twidro",
+  "twivideo",
+  "javtwi",
+  "Twitter動画保管庫",
+  "TwiHub",
+];
+
+const comingBirdSignals = [
+  { label: "Ranking by", values: ["再生数", "DL数", "お気に入り数"] },
+  { label: "Period", values: ["24時間", "3日間", "週間", "30日間"] },
+];
+
+const comingBirdDetails = [
+  {
+    title: ["新着とランキングを、", "みんなで育てる"],
+    body: "アプリ内の反応を集計し、専用の新着フィードとランキングへ反映。各動画には現在の件数が表示されます。",
+  },
+  {
+    title: ["本文やユーザー名から", "探せる"],
+    body: "Coming Bird内を全文、本文、ユーザー名で検索できます。XのURLから動画を取り込むこともできます。",
+  },
+  {
+    title: ["不適切な動画は", "アプリから報告"],
+    body: "著作権侵害や不適切な内容を、フィードや動画詳細からComing Birdへ直接報告できます。",
+  },
+  {
+    title: ["データ共有は、", "自分で選べる"],
+    body: "共有されるのは個人を特定できる情報を含まない動画メタデータのみ。協力するかは初回設定で選べ、あとからいつでも変更できます。",
+  },
+];
+
+const features = [
+  {
+    name: "Home",
+    body: "複数ソースのフィードを切り替え、リストまたは2〜8列のグリッドで閲覧。表示方法やカルーセルの位置も自分に合わせて調整できます。",
+    shot: "/res/app/feature-home.jpg",
+    alt: "安全な撮影用データを表示したiMonsのホーム画面",
+  },
+  {
+    name: "Search",
+    body: "対応ソースのタグやユーザーを検索。人気順と新着順を切り替えて、目的の動画を発見できます。",
+    shot: "/res/app/feature-search.jpg",
+    alt: "安全な撮影用データによるiMonsの検索結果画面",
+  },
+  {
+    name: "Ranking",
+    body: "ソースごとのランキングを確認。24時間、週間、月間などの期間を切り替えられます。",
+    shot: "/res/app/feature-ranking.jpg",
+    alt: "安全な撮影用データによるiMonsのランキング画面",
+  },
+  {
+    name: "Download",
+    body: "XのURLやShare Extensionから動画を追加して保存。URL解決サービスや自動ダウンロードも設定できます。",
+    shot: "/res/app/feature-download.jpg",
+    alt: "iMonsの外部動画サービスと自動ダウンロード設定画面",
+  },
+  {
+    name: "Favorites",
+    body: "動画とユーザーをフォルダ、スナップショット、視聴履歴で整理。Google Drive同期にも対応します。",
+    shot: "/res/app/feature-favorites.jpg",
+    alt: "安全な撮影用データによるiMonsの保存済み画面",
+  },
+  {
+    name: "Player",
+    body: "通常再生、Shorts、PiPに対応。消失した動画はWayback Machineから再生候補を探せます。",
+    shot: "/res/app/feature-player.jpg",
+    alt: "安全な撮影用データによるiMonsの動画プレイヤー画面",
+  },
+];
+
+const downloads = [
+  {
+    href: "/install/altstore-pal/prerequisites.html",
+    title: "AltStore PAL インストール手順",
+    note: "日本とEU向け / iOS 26.2以上",
+    Icon: ArrowRight,
+    primary: true,
+  },
+  {
+    href: "/install/altstore-pal/faq.html",
+    title: "AltStore PAL よくある質問",
+    note: "導入前後のトラブルシューティング",
+    Icon: ArrowRight,
+  },
+  {
+    href: "https://eichi.yyyywaiwai.com/iMons-unsigned.ipa",
+    title: "IPAをダウンロード",
+    note: "通常版 / 署名なし",
+    Icon: ArrowDown,
+  },
+  {
+    href: "https://eichi.yyyywaiwai.com/iMons-filepickerfix.ipa",
+    title: "FilePicker修正版",
+    note: "署名なし / ファイル選択の問題を修正",
+    Icon: ArrowDown,
+  },
+];
+
+const secondaryLinks = [
+  {
+    href: "https://discord.com/invite/DfRhN8uFjX",
+    kicker: "Support",
+    title: "インストールで困ったらDiscordへ",
+  },
+  {
+    href: "https://imons-android.tqmane.dev/",
+    kicker: "Android",
+    title: "Android版はこちら",
+  },
+];
+---
+
+<BaseLayout
+  title="iMons - Get yourself going."
+  description="iMons - unofficial Twitter saved-ranking client for iOS"
+  canonicalPath="/"
+  ogImage="/og-image.png"
+>
+  <SiteHeader isHome />
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section id="top" class="border-b border-border">
+      <Container
+        class="grid items-center gap-16 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:py-28"
+      >
+        <div>
+          <Badge variant="secondary" className="h-6 px-3 font-normal">
+            Unofficial X video client for iOS
+          </Badge>
+
+          <h1
+            class="mt-6 text-4xl leading-[1.15] font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
+          >
+            <span class="ph">ソース横断から</span><span class="ph">保存まで、</span
+            ><span class="ph text-muted-foreground">これ一つで。</span>
+          </h1>
+
+          <p class="mt-6 max-w-xl leading-8 text-muted-foreground">
+            8つのX動画系コンテンツソースを横断。フィード、検索、ランキング、再生、保存まで、ひとつのアプリで完結します。
+          </p>
+
+          <div class="mt-9 flex flex-wrap gap-3">
+            <a href="#download" class={ctaClass}>
+              Download iMons
+              <ArrowRight className="size-4" />
+            </a>
+            <a href="#features" class={ctaOutlineClass}>See Features</a>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center lg:items-end">
+          <img
+            src="/app-icon.png"
+            alt="iMons App Icon"
+            width="1080"
+            height="1080"
+            fetchpriority="high"
+            class="size-40 rounded-3xl ring-1 ring-foreground/10 sm:size-48"
+          />
+          <p class="mt-6 text-xl font-semibold tracking-tight">iMons</p>
+          <p class="mt-1 text-sm text-muted-foreground">Get yourself going.</p>
+        </div>
+      </Container>
+    </section>
+
+    <!-- Source strip -->
+    <section aria-label="対応ソース" class="border-b border-border">
+      <Container class="grid gap-6 py-10 md:grid-cols-[180px_1fr] md:gap-10">
+        <p class="text-sm font-medium text-muted-foreground">
+          8 sources, one app
+        </p>
+        <ul class="flex flex-wrap gap-2">
+          {
+            sources.map((source) => (
+              <li>
+                <Badge variant="outline" className="h-7 gap-1.5 px-3 font-normal">
+                  {source}
+                  {source === "Coming Bird" && (
+                    <span class="text-[0.625rem] tracking-wide text-muted-foreground uppercase">
+                      Beta
+                    </span>
+                  )}
+                </Badge>
+              </li>
+            ))
+          }
+        </ul>
+      </Container>
+    </section>
+
+    <!-- Coming Bird -->
+    <section aria-labelledby="coming-bird-title" class="border-b border-border">
+      <Container class="py-24 lg:py-32">
+        <div class="grid gap-16 lg:grid-cols-2 lg:gap-24">
+          <div data-reveal>
+            <div class="flex items-center gap-2">
+              <p class="text-sm font-medium text-muted-foreground">
+                Coming Bird
+              </p>
+              <Badge variant="outline" className="font-normal">Beta</Badge>
+            </div>
+
+            <h2
+              id="coming-bird-title"
+              class="mt-5 text-3xl leading-tight font-semibold tracking-tight text-balance sm:text-4xl"
+            >
+              <span class="ph">みんなの反応が、</span><span class="ph"
+                >次の発見をつくる。</span
+              >
+            </h2>
+
+            <p class="mt-6 max-w-xl leading-8 text-muted-foreground">
+              iMonsユーザーの再生、ダウンロード、お気に入りをもとに、新しい動画や注目されている動画を見つけられる独自のコンテンツソースです。
+            </p>
+
+            <dl
+              class="mt-10 space-y-4"
+              aria-label="Coming Birdで確認できる指標と期間"
+            >
+              {
+                comingBirdSignals.map(({ label, values }) => (
+                  <div class="flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-border pt-4">
+                    <dt class="w-24 text-xs font-medium tracking-wide text-muted-foreground uppercase">
+                      {label}
+                    </dt>
+                    <dd class="flex flex-wrap gap-2">
+                      {values.map((value) => (
+                        <Badge variant="secondary" className="font-normal">
+                          {value}
+                        </Badge>
+                      ))}
+                    </dd>
+                  </div>
+                ))
+              }
+            </dl>
+          </div>
+
+          <dl class="divide-y divide-border border-y border-border">
+            {
+              comingBirdDetails.map(({ title, body }, i) => (
+                <div
+                  class="grid gap-3 py-7 sm:grid-cols-[minmax(150px,0.8fr)_1.2fr] sm:gap-8"
+                  data-reveal
+                  style={`--reveal-delay:${i * 70}ms`}
+                >
+                  <dt class="font-medium">
+                    {title.map((part) => (
+                      <span class="ph">{part}</span>
+                    ))}
+                  </dt>
+                  <dd class="text-sm leading-7 text-muted-foreground">{body}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+
+        <p
+          class="mt-16 border-t border-border pt-6 text-xs text-muted-foreground"
+        >
+          Coming
+          Birdはベータ版です。外部サービスや運用状況により、一部機能を利用できない場合があります。
+        </p>
+      </Container>
+    </section>
+
+    <!-- Features -->
+    <section
+      id="features"
+      aria-labelledby="features-title"
+      class="border-b border-border"
+    >
+      <Container class="py-24 lg:py-32">
+        <div class="max-w-2xl" data-reveal>
+          <p class="text-sm font-medium text-muted-foreground">Features</p>
+          <h2
+            id="features-title"
+            class="mt-4 text-3xl leading-tight font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl"
+          >
+            <span class="ph">探す、見つける、</span><span class="ph"
+              >残しておく。</span
+            >
+          </h2>
+          <p class="mt-5 leading-8 text-muted-foreground">
+            コンテンツとの距離を縮めるための機能を、ひとつのアプリにまとめました。
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            features.map(({ name, body, shot, alt }, i) => (
+              <div data-reveal style={`--reveal-delay:${(i % 3) * 70}ms`}>
+                <Card className="h-full gap-6 pb-0 [--card-spacing:--spacing(6)]">
+                  <CardHeader>
+                    <h3 class={cardTitleClass}>{name}</h3>
+                    <CardDescription className="mt-1 leading-7">
+                      {body}
+                    </CardDescription>
+                  </CardHeader>
+                  <div class="h-52 overflow-hidden px-6">
+                    <img
+                      src={shot}
+                      alt={alt}
+                      width="368"
+                      height="700"
+                      loading="lazy"
+                      class="w-full rounded-t-lg ring-1 ring-foreground/10"
+                    />
+                  </div>
+                </Card>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="mt-5" data-reveal>
+          <Card
+            className="grid items-center gap-8 pb-0 sm:grid-cols-2 [--card-spacing:--spacing(6)]"
+          >
+            <CardHeader>
+              <h3 class={cardTitleClass}>App Lock</h3>
+              <CardDescription className="mt-1 max-w-md leading-7">
+                Face
+                IDとTouch IDによるアプリロックとプライバシーオーバーレイに対応します。
+              </CardDescription>
+            </CardHeader>
+            <div class="h-52 overflow-hidden px-6 sm:h-60">
+              <img
+                src="/res/app/feature-security.jpg"
+                alt="iMonsのFace ID、Touch IDとファイル表示設定画面"
+                width="368"
+                height="650"
+                loading="lazy"
+                class="w-full rounded-t-lg ring-1 ring-foreground/10"
+              />
+            </div>
+          </Card>
+        </div>
+      </Container>
+    </section>
+
+    <!-- Download -->
+    <section id="download" aria-labelledby="download-title">
+      <Container
+        class="grid gap-16 py-24 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24 lg:py-32"
+      >
+        <div class="lg:sticky lg:top-28 lg:self-start" data-reveal>
+          <p class="text-sm font-medium text-muted-foreground">Download</p>
+          <h2
+            id="download-title"
+            class="mt-4 text-3xl leading-tight font-semibold tracking-tight text-balance sm:text-4xl"
+          >
+            <span class="ph">あなたの環境に</span><span class="ph"
+              >合う方法で。</span
+            >
+          </h2>
+          <p class="mt-5 leading-8 text-muted-foreground">
+            iOS 17.0以上に対応。まずは AltStore PAL の手順を確認してください。iOS
+            26.2以上では単体インストールが可能です。それ以外の環境ではIPAのサイドロードを利用できます。
+          </p>
+
+          <Separator className="mt-10" />
+          <ul class="divide-y divide-border">
+            {
+              secondaryLinks.map(({ href, kicker, title }) => (
+                <li>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    class="group flex items-center justify-between gap-4 rounded-sm py-4 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+                  >
+                    <span>
+                      <span class="block text-xs font-medium tracking-wide text-muted-foreground uppercase">
+                        {kicker}
+                      </span>
+                      <span class="mt-1 block text-sm font-medium">{title}</span>
+                    </span>
+                    <ArrowUpRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <ul
+          class="divide-y divide-border overflow-hidden rounded-xl ring-1 ring-foreground/10"
+        >
+          {
+            downloads.map(({ href, title, note, Icon, primary }, i) => (
+              <li data-reveal style={`--reveal-delay:${i * 70}ms`}>
+                <a
+                  href={href}
+                  class:list={[
+                    "group flex items-center gap-5 px-6 py-6 transition-colors focus-visible:-outline-offset-2 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
+                    primary
+                      ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                      : "hover:bg-muted/50",
+                  ]}
+                >
+                  <span
+                    class:list={[
+                      "text-xs font-medium tabular-nums",
+                      primary
+                        ? "text-primary-foreground/70"
+                        : "text-muted-foreground",
+                    ]}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span class="min-w-0 flex-1">
+                    <span class="block font-medium tracking-tight">{title}</span>
+                    <span
+                      class:list={[
+                        "mt-1 block text-xs",
+                        primary
+                          ? "text-primary-foreground/70"
+                          : "text-muted-foreground",
+                      ]}
+                    >
+                      {note}
+                    </span>
+                  </span>
+                  <Icon className="size-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </Container>
+    </section>
+  </main>
+
+  <SiteFooter isHome />
+
+  <script>
+    import "@/scripts/site.ts";
+  </script>
+</BaseLayout>

@@ -1,0 +1,72 @@
+---
+import { Check } from "lucide-react";
+import Container from "@/components/Container.astro";
+
+interface Props {
+  /** 1-indexed current step. */
+  current: number;
+}
+
+const { current } = Astro.props;
+
+const steps = [
+  { href: "/install/altstore-pal/prerequisites.html", label: "前提条件" },
+  { href: "/install/altstore-pal/step2-install.html", label: "AltStore PAL" },
+  { href: "/install/altstore-pal/step3-screentime.html", label: "設定変更" },
+  { href: "/install/altstore-pal/step4-imonos.html", label: "iMons追加" },
+];
+---
+
+<div class="border-b border-border">
+  <Container class="py-6">
+    <ol class="flex items-center" aria-label="インストール進捗">
+      {
+        steps.map(({ href, label }, i) => {
+          const step = i + 1;
+          const done = step < current;
+          const active = step === current;
+
+          return (
+            <>
+              {i > 0 && (
+                <li
+                  aria-hidden="true"
+                  class:list={[
+                    "mx-2 h-px min-w-3 flex-1 sm:mx-3",
+                    done ? "bg-foreground/40" : "bg-border",
+                  ]}
+                />
+              )}
+              <li>
+                <a
+                  href={href}
+                  aria-current={active ? "step" : undefined}
+                  class="group flex items-center gap-2 rounded-sm focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+                >
+                  <span
+                    class:list={[
+                      "flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-medium tabular-nums transition-colors",
+                      done && "bg-foreground/15 text-foreground",
+                      active && "bg-primary text-primary-foreground",
+                      !done && !active && "bg-muted text-muted-foreground",
+                    ]}
+                  >
+                    {done ? <Check className="size-3.5" /> : step}
+                  </span>
+                  <span
+                    class:list={[
+                      "hidden text-xs font-medium whitespace-nowrap sm:inline",
+                      active ? "text-foreground" : "text-muted-foreground",
+                    ]}
+                  >
+                    {label}
+                  </span>
+                </a>
+              </li>
+            </>
+          );
+        })
+      }
+    </ol>
+  </Container>
+</div>

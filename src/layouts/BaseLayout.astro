@@ -1,0 +1,68 @@
+---
+import "@/styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Absolute path, e.g. `/story.html`. Omitted pages get no canonical tag. */
+  canonicalPath?: string;
+  /** Social card. Only the landing page needs one today. */
+  ogImage?: string;
+  bodyClass?: string;
+}
+
+const { title, description, canonicalPath, ogImage, bodyClass } = Astro.props;
+
+const canonical = canonicalPath
+  ? new URL(canonicalPath, Astro.site).href
+  : undefined;
+const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : undefined;
+---
+
+<!doctype html>
+<html lang="ja" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0a0a0a" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" href="/app-icon.png" type="image/png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="iMons" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {
+      ogImageUrl && (
+        <>
+          <meta property="og:image" content={ogImageUrl} />
+          <meta property="og:image:secure_url" content={ogImageUrl} />
+          <meta property="og:image:type" content="image/png" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:image:alt" content="iMons App Icon" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content={ogImageUrl} />
+        </>
+      )
+    }
+  </head>
+
+  <body class={bodyClass}>
+    <a
+      href="#main-content"
+      class="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-3 focus-visible:left-3 focus-visible:z-100 focus-visible:rounded-md focus-visible:bg-primary focus-visible:px-4 focus-visible:py-2 focus-visible:text-sm focus-visible:font-medium focus-visible:text-primary-foreground"
+    >
+      本文へスキップ
+    </a>
+    <slot />
+  </body>
+</html>

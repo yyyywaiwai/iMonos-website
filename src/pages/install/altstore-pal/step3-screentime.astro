@@ -1,0 +1,53 @@
+---
+import InstallLayout from "@/layouts/InstallLayout.astro";
+import InstallNav from "@/components/InstallNav.astro";
+import InstructionList from "@/components/InstructionList.astro";
+import ScreenshotGrid from "@/components/ScreenshotGrid.astro";
+
+const instructions = [
+  {
+    title: "制限をオンにする",
+    body: "設定アプリ ＞ スクリーンタイム ＞ <strong>コンテンツとプライバシーの制限</strong> に進み、一番上のトグルを<strong>オン</strong>にします。",
+  },
+  {
+    title: "ストア制限の設定を開く",
+    body: "<strong>「App Store、メディア、Web、およびゲーム」</strong>をタップします。",
+  },
+  {
+    title: "アプリの制限を「Unrated」に",
+    body: "「アプリ」の項目を選択し、一番下の<strong>「Unrated」</strong>にチェックを入れます。",
+  },
+];
+
+const shots = [1, 2, 3].map((n) => ({
+  src: `/res/scrtime-${n}.jpg`,
+  alt: `スクリーンタイム設定 ${n}`,
+  width: 750,
+  height: 1334,
+}));
+---
+
+<InstallLayout
+  title="スクリーンタイムの設定 - AltStore PAL インストール | iMons"
+  description="iMonsをインストールするためにスクリーンタイムの制限を解除する手順"
+  canonicalPath="/install/altstore-pal/step3-screentime.html"
+  step={3}
+  kicker="Step 3 of 4"
+  heading="スクリーンタイムの設定"
+  subtitle="iMons（審査適応区分外アプリ）をインストールできるように、制限を一時的に緩和します。"
+>
+  <ScreenshotGrid {shots} />
+
+  <InstructionList items={instructions} />
+
+  <InstallNav
+    prev={{
+      href: "/install/altstore-pal/step2-install.html",
+      label: "前へ：AltStore PAL",
+    }}
+    next={{
+      href: "/install/altstore-pal/step4-imonos.html",
+      label: "次へ：iMons追加",
+    }}
+  />
+</InstallLayout>
