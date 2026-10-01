@@ -1,10 +1,33 @@
 ---
+import { ChevronDown } from "lucide-react";
 import InstallLayout from "@/layouts/InstallLayout.astro";
 import InstallNav from "@/components/InstallNav.astro";
 import InstructionList from "@/components/InstructionList.astro";
 import ScreenshotGrid from "@/components/ScreenshotGrid.astro";
 
-const instructions = [
+const ios27Instructions = [
+  {
+    title: "アプリとウェブサイトを開く",
+    body: "設定アプリ ＞ スクリーンタイム ＞ <strong>アプリとウェブサイト</strong> に進みます。",
+  },
+  {
+    title: "制限の設定を開く",
+    body: "上部の<strong>「制限」</strong>をタップします。",
+  },
+  {
+    title: "年齢制限を「審査適応区分外」に",
+    body: "<strong>「年齢制限指定」</strong>をタップし、一番下の<strong>「審査適応区分外」</strong>にチェックを入れます。",
+  },
+];
+
+const ios27Shots = [1, 2, 3, 4].map((n) => ({
+  src: `/res/scrtime27-${n}.jpg`,
+  alt: `iOS 27 スクリーンタイム設定 ${n}`,
+  width: 750,
+  height: 1624,
+}));
+
+const ios26Instructions = [
   {
     title: "制限をオンにする",
     body: "設定アプリ ＞ スクリーンタイム ＞ <strong>コンテンツとプライバシーの制限</strong> に進み、一番上のトグルを<strong>オン</strong>にします。",
@@ -19,9 +42,9 @@ const instructions = [
   },
 ];
 
-const shots = [1, 2, 3].map((n) => ({
+const ios26Shots = [1, 2, 3].map((n) => ({
   src: `/res/scrtime-${n}.jpg`,
-  alt: `スクリーンタイム設定 ${n}`,
+  alt: `iOS 26 スクリーンタイム設定 ${n}`,
   width: 750,
   height: 1334,
 }));
@@ -36,9 +59,21 @@ const shots = [1, 2, 3].map((n) => ({
   heading="スクリーンタイムの設定"
   subtitle="iMons（審査適応区分外アプリ）をインストールできるように、制限を一時的に緩和します。"
 >
-  <ScreenshotGrid {shots} />
-
-  <InstructionList items={instructions} />
+  {
+    [
+      { label: "iOS 27をお使いの方", shots: ios27Shots, items: ios27Instructions, open: true },
+      { label: "iOS 26をお使いの方", shots: ios26Shots, items: ios26Instructions, open: false },
+    ].map(({ label, shots, items, open }) => (
+      <details {open} class="group mt-6 rounded-xl bg-card p-6 ring-1 ring-foreground/10">
+        <summary class="flex cursor-pointer list-none items-center justify-between font-medium tracking-tight [&::-webkit-details-marker]:hidden">
+          <h2>{label}</h2>
+          <ChevronDown className="size-5 transition-transform group-open:rotate-180" />
+        </summary>
+        <ScreenshotGrid {shots} />
+        <InstructionList {items} />
+      </details>
+    ))
+  }
 
   <InstallNav
     prev={{
